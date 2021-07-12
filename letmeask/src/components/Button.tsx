@@ -1,19 +1,15 @@
-import { useState } from "react";
+import { ButtonHTMLAttributes } from 'react'
 
-function Button() {
-  const [counter, setCounter] = useState(0);
+import '../styles/button.scss'
 
-  function increment() {
-    // counter += 1;
-    setCounter(counter + 1);
-    console.log(counter);
-  }
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  isOutlined?: boolean;
+};
 
+export function Button({ isOutlined = false, ...props }: ButtonProps) {
   return (
-    <button onClick={increment}>
-      {counter}
-    </button>
+    <button
+      className={`button ${isOutlined ? 'outlined' : ''}`}
+      {...props} />
   )
 }
-
-export { Button };
